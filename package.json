@@ -1,0 +1,54 @@
+{
+  "name": "Innovacer-HackerCamp-Submission",
+  "version": "0.2.1",
+  "description": "",
+  "engines": {
+    "npm": "5.6.0",
+    "node": "9.6.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "snyk test && node index.js",
+    "deploy": "now -E",
+    "format": "prettier es5 --no-semi --single-quote --write src/**/*.js",
+    "contrib": "contributor"
+  },
+  "pre-commit": [
+    "format"
+  ],
+  "devDependencies": {
+    "contributor": "0.1.25",
+    "prettier": "1.11.0"
+  },
+  "dependencies": {
+    "console.lol": "0.1.2",
+    "csv-express": "^1.2.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.2",
+    "request": "^2.83.0",
+    "snyk": "1.69.10",
+    "twit": "^2.2.9",
+    "unirest": "^0.5.1"
+  },
+  "now": {
+    "alias": "twitter-bot-bootstrap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spences10/twitter-bot-bootstrap.git"
+  },
+  "keywords": [
+    "twitter",
+    "bot",
+    "bootstrap"
+  ],
+  "author": "Chaitanya Giri (https://chaitanyagiri.ga/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chaitanyagiri/tweetit/issues"
+  },
+  "homepage": "https://github.com/chaitanyagiri/tweetit",
+  "snyk": true
+}
