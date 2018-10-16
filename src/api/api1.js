@@ -44,10 +44,11 @@ router.route('/').get(function(req,res){
 				Tweet.insertMany(tweet)
 					.then(function(docs) {
 						console.log(param.searchCount.toString() + ' tweets successfully saved in mongoDB database.');
-						res.status(200).send(param.searchCount.toString() + ' tweets successfully saved in mongoDB database.' + docs);
+						res.json({"error":false,"message" : param.searchCount.toString() + ' tweets successfully saved in mongoDB database.'});
 					})
 					.catch(function(err) {
 						console.log('ERROR OCCURED - ' + err);
+						res.json({"error" : false,"message" : "SORRY AN ERROR OCCURRED. Please check log files"});
 					});
 			}
 		}
