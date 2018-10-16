@@ -19,22 +19,22 @@ Use Twitter Search/Streaming API to fetch are store the target tweets with metad
 
 1, Clone this repository:
 
-git clone <https://github.com/chaitanyagiri/innovaccer-hackercamp-backend.git>
+```git clone <https://github.com/chaitanyagiri/innovaccer-hackercamp-backend.git>```
 
 2, Change directory
 
-cd innovaccer-hackercamp-backend
+```cd innovaccer-hackercamp-backend```
 
 3, Install dependencies
 
-npm install
+```npm install```
 
 4, Generate Consumer Key, Consumer Secret, Access token, Access Token Secret
 
 Refer to this link - <https://apps.twitter.com/>
 
 5, Create a .env file and add below mentioned details in it.
-
+```
 TWITTER_CONSUMER_KEY=YOUR_CONSUMER_KEY
 
 TWITTER_CONSUMER_SECRET=YOUR_CONSUMER_SECRET
@@ -52,16 +52,17 @@ TWITTER_LANG=PREFERRED LANGUAGE (en for English)
 TWITTER_SEARCH_COUNT=20
 
 (MAX NUMBER OF TWEET TO CAPTURE IN ONE API CALL(for first api))
+```
 
 6, Start the server
 
-npm start
+```npm start```
 
 You should get something like this when every step has been followed correctly:
+```
+Innovacer-HackerCamp-Submission@0.2.1 start /home/chaitanyagiri/projects/innovaccer backend-api
 
-> Innovacer-HackerCamp-Submission@0.2.1 start /home/chaitanyagiri/projects/innovaccer backend-api
-
-> node index.js
+node index.js
 
 ROFL:ROFL:ROFL:ROFL
 
@@ -78,6 +79,7 @@ L   \________]
    --------/
 
 Updated : Server listening at port 3000
+```
 
 ### Folder Structure:
 
@@ -93,13 +95,15 @@ This API triggers twitter search and stores a curated version of the data return
 API 1 - http://0.0.0.0:3000/api1 (methods supported - GET)
 
 SUCCESS-
-
+```
 {"error":false,"message" : '20 tweets successfully saved in mongoDB database.'}
+```
 
 ERROR-
-
+```
 {"error" : false,"message" : "SORRY AN ERROR OCCURRED. Please check log files"}
-
+```
+<hr>
 SAMPLE REQUEST AND RESPONSE DEMONSTRATED IN POSTMAN -
 
 ### ![](https://lh4.googleusercontent.com/3nOKryj1JPZycQWoN9v-quEGQTxveCLxLRpj2Ua17OhBKF1KGYPXc9QJ7VglmHCWrYQVTD4wN4ADK5UVXqjvHWCxGdNWtZrbCximiCe6jswWqAe7YXmQ4giPE9-jAQz1rbaX48po)
@@ -115,7 +119,7 @@ This filters tweets based upon the parameters like user/screen name, retweet cou
 http://0.0.0.0:3000/api2/filter (methods supported - POST)
 
 SUCCESS-
-
+```
 {
 
  "error": false,
@@ -125,9 +129,9 @@ SUCCESS-
  }
 
 }
-
+```
 ERROR-
-
+```
 {
 
  "error": true,
@@ -135,7 +139,8 @@ ERROR-
  "message": "SORRY AN ERROR OCCURRED. Please check log files"
 
 }
-
+```
+<hr>
 SAMPLE REQUEST AND RESPONSE DEMONSTRATED IN POSTMAN -
 
 ![](https://lh4.googleusercontent.com/5IJHLhs-x7UEDIEy-ziOD9ExZ8NJQ2Eevf5veXj05cydp1jPC8_oqhjjn51kvMmm1NOTjRVZI3lEjalq7nq6pqgUJ6jNzC9LE6Y0j8OF_TnWvfnNjY5KhAZwiel85BiY7g1nUlG0)
@@ -147,7 +152,7 @@ Filtering parameters are passed as query along with the url. A sample request wo
 http://0.0.0.0:3000/api2/filter?favourite_count>1&retweet_count<2&fields=tweet_id,retweet_count,screen_name,text&sort=-retweet_count
 
 becomes the following hash:
-
+```
 {
 
  criteria: {
@@ -167,7 +172,7 @@ becomes the following hash:
  }
 
 }
-
+```
 ### Field selection
 
 The fields argument is a comma separated list of field names to include in the results. For example fields=name,age results in a option.fields value of {'name':true,'age':true}. If no fields are specified then option.fields is null, returning full documents as results.
@@ -183,12 +188,12 @@ The sort argument is a comma separated list of fields to sort the results by. Fo
 ### Filtering
 
 Any query parameters other then fields, omit, sort, offset, and limit are interpreted as query criteria. For example name=john&age>21 results in a criteria value of:
-
+```
 {\
  'name': 'john',\
  'age': { $gt: 21 }\
 }
-
+```
 -   Supports standard comparison operations (=, !=, >, <, >=, <=).
 
 -   Numeric values, where Number(value) != NaN, are compared as numbers (ie., field=10 yields {field:10}).
@@ -258,7 +263,7 @@ Sort descending by tweet text
 Though pagination of tweets could have easily been achieved by offset and limit values in filter api but the in this application pagination has been done from scratch to show some coding skills that would be required for the Internship.
 
 In API2 to get responses paginated we can pass paginate parameters as raw json format in request body.
-
+```
 {
 
    "paginate":{
@@ -270,7 +275,7 @@ In API2 to get responses paginated we can pass paginate parameters as raw json f
    }
 
 }
-
+```
 ### 2.2,  API to search text and username among tweets.(/api2/search)
 
 This searches the text and username(screen_name) of the tweets and responds with tweet data matching the search. For more about this search refer to <https://docs.mongodb.com/manual/text-search/>
@@ -278,7 +283,7 @@ This searches the text and username(screen_name) of the tweets and responds with
 http://0.0.0.0:3000/api2/search (methods supported - POST)
 
 SUCCESS-
-
+```
 {
 
  "error": false,
@@ -288,9 +293,9 @@ SUCCESS-
  }
 
 }
-
+```
 ERROR-
-
+```
 {
 
  "error": true,
@@ -298,7 +303,8 @@ ERROR-
  "message": "SORRY AN ERROR OCCURRED. Please check log files"
 
 }
-
+```
+<hr>
 SAMPLE REQUEST AND RESPONSE DEMONSTRATED IN POSTMAN -
 
 ![](https://lh6.googleusercontent.com/Uh1TJBJ2NM13GwUgarzmzcs44GvtaURT_BV-lugz5z371ifptnwJCXQ8aF89wsNMvaNCCZ_DF7s63sDOUgZcKxBfnRIC_GRiSQa6w-ryznAxQXuzkJvMnJeE9947FFL_C1uLiTz_)
@@ -306,7 +312,7 @@ SAMPLE REQUEST AND RESPONSE DEMONSTRATED IN POSTMAN -
 We can pass sorting and filtering parameters similar to the api2 to the searched data. But along with we need to pass search string in the body.
 
 A raw format of request body will look like this:
-
+```
 {
 
    "paginate":{
@@ -320,7 +326,7 @@ A raw format of request body will look like this:
    "search":"Election and Explosion"
 
 }
-
+```
 Note - Search and Pagination parameters are sent in the form of json as request body in order to demonstrate the knowledge of doing things with other ways also. This may look like an unwanted added complication but the intention was to show the variety in coding stye.
 
 ### 3\. API to export CSV files (/api3)
@@ -334,7 +340,7 @@ Prompt window asking to download tweets.csv is appeared
 ERROR-
 
 Appropriate error message is displayed
-
+<hr>
 Sample request to export all tweets having retweet_count>1 to a CSV file in descending order:
 
 https://localhost:3000/api3?retweet_count>1&sort=-retweet_count
